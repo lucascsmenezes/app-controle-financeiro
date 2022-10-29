@@ -35,38 +35,41 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
   return(
     <>
       <C.Container>
-      <C.InputContent>
+        <C.InputContent>
           <C.Label>Descrição</C.Label>
           <C.Input 
           value={desc} 
           onChange={(e) => setDesc(e.target.value)} 
           />
         </C.InputContent>
+
         <C.InputContent>
           <C.Label>Valor</C.Label>
           <C.Input 
-          value={amount}
-          type="number" 
-          onChange={(e) => setAmount(e.target.value)} />
+            value={amount}
+            type="number" 
+            onChange={(e) => setAmount(e.target.value)} 
+          />
         </C.InputContent>
+
         <C.RadioGroup>
-        <C.Label htmlFor='rIncome'>Entrada</C.Label>
+          <C.Label htmlFor='rIncome'>Entrada</C.Label>
+            <C.Input 
+              type="radio"
+              id="rIncome"
+              name="group1"
+              onChange={()=>setExpense(isExpense)}
+            />
+          <C.Label htmlFor='rExpense'>Saida</C.Label>
           <C.Input 
-          type="radio"
-          id="rIncome"
-          name="group1"
-          onChange={()=>setExpense(isExpense)}
-        />
-        <C.Label htmlFor='rExpense'>Saida</C.Label>
-          <C.Input 
-          type="radio"
-          id="rExpense"
-          defaultChecked
-          name="group1"
-          onChange={()=>setExpense(!isExpense)}
-        />
-    
+            type="radio"
+            id="rExpense"
+            defaultChecked
+            name="group1"
+            onChange={()=>setExpense(!isExpense)}
+          />
         </C.RadioGroup>
+        
         <C.Button onClick={handleSave}>Adicionar</C.Button>
       </C.Container>
 
