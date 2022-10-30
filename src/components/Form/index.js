@@ -4,6 +4,7 @@ import * as C from "./styles";
 
 
 const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
+
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState("");
   const [isExpense, setExpense] = useState(false);
@@ -31,6 +32,15 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
 
     setDesc("");
     setAmount("");
+  }
+
+  const [search, setSearch] = useState("");
+  const handleSearch = () => {
+    if(!search){
+      alert("Informe a descrição");
+      return;
+    }
+
   }
   return(
     <>
@@ -73,7 +83,18 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
         <C.Button onClick={handleSave}>Adicionar</C.Button>
       </C.Container>
 
-      <Grid itens={transactionsList} setItens={setTransactionsList}/>
+      <C.ContainerSearch>
+          <C.InputContentSearch>
+            <C.Input 
+            value={search} 
+            placeholder='Pesquisar...'
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          </C.InputContentSearch>
+          <C.ButtonSearch onClick={handleSearch}>Pesquisar</C.ButtonSearch>
+      </C.ContainerSearch>
+
+      <Grid itens={transactionsList} setItens={setTransactionsList} />
     </>
     );
 }; 
