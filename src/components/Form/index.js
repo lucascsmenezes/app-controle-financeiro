@@ -49,13 +49,13 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
     setDesc("");
     setAmount("");
   } 
-  var json = localStorage.getItem('transaction');
-  const jsonParse = JSON.parse(json);
-  const verification = jsonParse.desc === inputSearch ? console.log(jsonParse.desc) : false;
 
+  const database = localStorage.getItem('transaction');
+  const jsonParse = JSON.parse(database);
+  
   const handleFilter = () => {
-    if(localStorage.getItem('transaction') !== null){
-      setTransactionsList(verification);
+    if(database !== null){
+      setTransactionsList(jsonParse);
     }else{
       alert('Não há dados no banco de dados');
     }
