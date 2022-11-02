@@ -11,7 +11,19 @@ export const Header = styled.h1`
 
 `;
 
-export const title = styled.div`
+export const Title = styled.div`
+    display: inline-flex;
+    padding: 20px;
     padding-top: 20px;
     color: #fff;
+`;
+
+export const Link = styled.a`
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+
+    &:hover{
+        color: black;
+    }
 `;

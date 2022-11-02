@@ -6,7 +6,8 @@ const Header = () => {
   return(
     <C.Container>
       <C.Header>
-        <C.title>Controle Financeiro</C.title>
+        <C.Title>Controle Financeiro</C.Title>
+        <C.Link href="/"> Home </C.Link>
       </C.Header>
     </C.Container>
     );

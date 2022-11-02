@@ -5,9 +5,24 @@ import * as C from "./styles";
 
 const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
 
+  const newData = new Date();
+
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState("");
+  const [inputSearch, setSearch] = useState("");
   const [isExpense, setExpense] = useState(false);
+  const currentDate = 
+    newData.getDay() + 
+    "/" + 
+    newData.getMonth() + 
+    "/" + 
+    newData.getFullYear() + 
+    " " +
+    "-" + 
+    " " +
+    newData.getHours() +
+    ":" +
+    newData.getMinutes();
 
   const generateID = () => Math.round(Math.random() * 1000);
 
@@ -22,26 +37,30 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
     }
 
     const transaction = {
-      id: generateID(),
+      id: generateID,
       desc: desc,
       amount: amount,
       expense: isExpense,
+      date: currentDate
     }
 
     handleAdd(transaction);
 
     setDesc("");
     setAmount("");
-  }
+  } 
+  var json = localStorage.getItem('transaction');
+  const jsonParse = JSON.parse(json);
+  const verification = jsonParse.desc === inputSearch ? console.log(jsonParse.desc) : false;
 
-  const [search, setSearch] = useState("");
-  const handleSearch = () => {
-    if(!search){
-      alert("Informe a descrição");
-      return;
+  const handleFilter = () => {
+    if(localStorage.getItem('transaction') !== null){
+      setTransactionsList(verification);
+    }else{
+      alert('Não há dados no banco de dados');
     }
-
   }
+
   return(
     <>
       <C.Container>
@@ -86,17 +105,16 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
       <C.ContainerSearch>
           <C.InputContentSearch>
             <C.Input 
-            value={search} 
+            value={inputSearch} 
             placeholder='Pesquisar...'
             onChange={(e) => setSearch(e.target.value)}
           />
           </C.InputContentSearch>
-          <C.ButtonSearch onClick={handleSearch}>Pesquisar</C.ButtonSearch>
+          <C.ButtonSearch onClick={handleFilter}>Pesquisar</C.ButtonSearch>
       </C.ContainerSearch>
 
-      <Grid itens={transactionsList} setItens={setTransactionsList} />
+      <Grid itens={transactionsList} setItens={setTransactionsList}/>
     </>
-    );
-}; 
-
+  );
+};
 export default Form;
