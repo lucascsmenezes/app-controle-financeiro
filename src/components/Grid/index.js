@@ -3,12 +3,13 @@ import GridItem from "../GridItem";
 import * as C from "./styles";
 
 
-const Grid = ({itens, setItens}) => {
+  const Grid = ({itens, setItens}) => {
 
-  const onDelete = (ID) => {
-    const newArray = itens.filter((transaction) => transaction.id !== ID);
-    setItens(newArray);
-    localStorage.setItem("transactions", JSON.stringify(newArray));
+
+    const onDelete = (id) => {
+      var filter = itens.filter( (todo) => todo.id !== id );
+      setItens(filter);
+      localStorage.setItem('transaction', JSON.stringify(filter));
   };
 
   return(

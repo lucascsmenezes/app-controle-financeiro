@@ -7,14 +7,15 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
 
   const newData = new Date();
 
+  const [id, setId] = useState(0);
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState("");
   const [inputSearch, setSearch] = useState("");
   const [isExpense, setExpense] = useState(false);
   const currentDate = 
-    newData.getDay() + 
+    (newData.getUTCDay() -1) + 
     "/" + 
-    newData.getMonth() + 
+    (newData.getUTCMonth() + 1) + 
     "/" + 
     newData.getFullYear() + 
     " " +
@@ -23,8 +24,6 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
     newData.getHours() +
     ":" +
     newData.getMinutes();
-
-  const generateID = () => Math.round(Math.random() * 1000);
 
   const handleSave = () => {
 
@@ -37,13 +36,14 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
     }
 
     const transaction = {
-      id: generateID,
-      desc: desc,
+      id: id,
+      desc: desc.toLocaleLowerCase(),
       amount: amount,
       expense: isExpense,
       date: currentDate
     }
 
+    setId(id + 1);
     handleAdd(transaction);
 
     setDesc("");
@@ -54,10 +54,17 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
   const jsonParse = JSON.parse(database);
   
   const handleFilter = () => {
+
+    if(!inputSearch){
+      return setTransactionsList(jsonParse);
+    }
+
     if(database !== null){
-      setTransactionsList(jsonParse);
+      setTransactionsList(jsonParse.filter(d => {
+        return d.desc === inputSearch.toLocaleLowerCase();
+      }));
     }else{
-      alert('Não há dados no banco de dados');
+      alert('Não há dados armazenados');
     }
   }
 

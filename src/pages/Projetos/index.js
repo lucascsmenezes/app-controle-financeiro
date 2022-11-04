@@ -14,6 +14,12 @@ const Projeto = () => {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [total, setTotal] = useState(0);
+  
+  useEffect(() => {
+    if(localStorage.getItem('transaction') !== null){
+      setTransactionsList(JSON.parse(localStorage.getItem('transaction')));
+    }
+  }, [])
 
   useEffect(()=>{
       const amountExpense = transactionsList
@@ -41,6 +47,7 @@ const Projeto = () => {
       
       localStorage.setItem("transaction", JSON.stringify(newArrayTransactions));
   }
+ 
   return (
     <>
       <Header />

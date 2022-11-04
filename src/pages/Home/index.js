@@ -1,8 +1,6 @@
 import React from "react";
 import * as C from "./styles";
-
 const Home = () => {
-/*Inserção do Código*/
 
 
   return (
@@ -13,14 +11,24 @@ const Home = () => {
             <C.img/>
             <C.ul>
               <C.li><C.a href="/">Home</C.a></C.li>
-              <C.li><C.a href="/projeto">Projeto</C.a></C.li>
+              <C.li><C.a href="/projeto">Controle Financeiro</C.a></C.li>
               <C.li><C.a href="/sobre">Sobre</C.a></C.li>
             </C.ul>
           </C.NavBar>
         </C.ContainerTop>
 
         <C.ContentCenter>
-          <C.h1>Conteúdo Central</C.h1>
+          <C.Grid>
+            <C.Card>
+              <C.CardUm />
+            </C.Card>
+            <C.Card>
+                <C.h1>Card 2</C.h1>
+            </C.Card>
+            <C.Card>
+                <C.h1>Card 3</C.h1>
+            </C.Card>
+          </C.Grid>
         </C.ContentCenter>
         
         <C.ContentCenter>

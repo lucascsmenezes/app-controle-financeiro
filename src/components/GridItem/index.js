@@ -6,7 +6,6 @@ import {
   FaTrash
 } from "react-icons/fa";
 
-
 const GridItem = ({item, onDelete}) => {
   return(
     <C.Tr>

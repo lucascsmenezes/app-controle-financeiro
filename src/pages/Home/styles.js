@@ -58,6 +58,16 @@ export const img = styled.img`
     height: 80px;
 `;
 
+export const CardUm = styled.img`
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3iVbZH1u1c3Pwv_zM4-jNc2xhgRW0Lk3llw&usqp=CAU");
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+`;
+
 export const ContentCenter = styled.div`
     display: flex;
     align-items: center;
@@ -76,7 +86,7 @@ export const Footer = styled.footer`
 
 
     nav{
-        width: 25%;
+        padding-left: 0;
 
     }
 
@@ -89,4 +99,27 @@ export const Footer = styled.footer`
     }
 
 
+`;
+
+export const Grid = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+`;
+
+export const Card = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    height: 400px;
+    background-color: white;
+    border-radius: 10px; 
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+    h1{
+        text-align: center;
+        color: black;
+    }
 `;
