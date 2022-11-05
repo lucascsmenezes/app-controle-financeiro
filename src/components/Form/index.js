@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Grid from '../Grid';
+import Modal from'../EditDialog';
 import * as C from "./styles";
 
 
@@ -120,6 +121,7 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
           <C.ButtonSearch onClick={handleFilter}>Pesquisar</C.ButtonSearch>
       </C.ContainerSearch>
 
+      <Modal />
       <Grid itens={transactionsList} setItens={setTransactionsList}/>
     </>
   );
