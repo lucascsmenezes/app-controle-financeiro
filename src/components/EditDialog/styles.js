@@ -10,10 +10,17 @@ export const Modal = styled.div`
     width: 500px;
     height: 100px;
     background-color: #1C6EA4;
+    visibility: hidden;
     border-radius: 10px;
     box-shadow: -webkit-box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, 5px 5px 15px 5px rgba(0,0,0,0); 
     box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, 5px 5px 15px 5px rgba(0,0,0,0);
 
+    #icon{
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 20px;
+    }
 `;
 
 export const inputText = styled.input`
