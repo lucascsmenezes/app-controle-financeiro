@@ -1,23 +1,24 @@
-import {React, useState} from 'react';
+import { React, useState } from 'react';
 import * as C from "./styles";
+import EditDialog from '../EditDialog';
 import {
   FaArrowAltCircleUp, 
   FaArrowAltCircleDown,
   FaTrash
 } from "react-icons/fa";
-import EditDialog from '../EditDialog';
 
 const GridItem = ({item, onDelete, editTodo}) => {
+
   let [open, setOpen] = useState(false);
- 
+  
   let closeDialog = () => {
     setOpen(!open);
   }
 
   return(
     <>
-      <EditDialog open={open} closeDialog={closeDialog} todo={item} editTodo={editTodo} /> 
       <C.Tr>
+      <EditDialog open={open} closeDialog={closeDialog} editTodo={editTodo} todo={item} /> 
         <C.Td><C.Checkbox type="checkbox" /></C.Td>
         <C.Td>{item.date}</C.Td>
         <C.Td onClick={() => setOpen(true)}>{item.desc}</C.Td>
@@ -29,6 +30,7 @@ const GridItem = ({item, onDelete, editTodo}) => {
           <FaTrash onClick={()=> onDelete(item.id)}/>         
         </C.Td>
       </C.Tr>
+    
     </>
   );
 };  

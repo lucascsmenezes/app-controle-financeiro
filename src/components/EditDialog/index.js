@@ -7,18 +7,18 @@ import { DialogContent } from '@mui/material'
 import { DialogContentText } from '@mui/material'
 import { DialogTitle } from '@mui/material'
 
-
-  const EditDialog = ({open, closeDialog, todo, editTodo}) => {
-
+  export const EditDialog = ({ open, closeDialog, editTodo, todo}) => {
+  
   const [editText, setEditText]  = useState(todo);
 
   const textHandler = () => {
       editTodo(todo.id, editText);
   }
+
   return (  
     <>
       <Dialog
-        open={open}
+        open={Boolean(open)}
         onClose={closeDialog}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"

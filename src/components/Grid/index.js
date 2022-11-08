@@ -2,7 +2,7 @@ import React from 'react';
 import GridItem from "../GridItem";
 import * as C from "./styles";
 
-  const Grid = ({itens, setItens}) => {
+  export const Grid = ({itens, setItens}) => {
 
     const onDelete = (id) => {
       var filter = itens.filter( (itens) => itens.id !== id );
@@ -12,17 +12,14 @@ import * as C from "./styles";
     };
 
     const editTodo = (id, editText) => {
-
-      var todoArray = [...itens]
-      
-      for( var i in todoArray){
-        if(todoArray[i].id === id){
-          todoArray[i].desc = editText;
-        }
-      }
-  
-      setItens(todoArray);
-    
+ 
+      itens.splice(id, 0, {desc: editText, id: id});
+      setItens(editText)
+      // for( var i in todoArray){
+      //   if(todoArray[i].id === id){
+      //     todoArray[i].desc = editText;
+      //   }
+      // }
     };
 
   return(
@@ -38,7 +35,7 @@ import * as C from "./styles";
         </C.Tr>
       </C.Thead>
       <C.Tbody>
-          {itens?.map((item, index)=>(<GridItem key={index} item={item} onDelete={onDelete} editTodo={editTodo}/>))}
+          {itens.map((item, index)=>(<GridItem key={index} item={item} onDelete={onDelete} editTodo={editTodo}/>))}
       </C.Tbody>
     </C.Table>
     );

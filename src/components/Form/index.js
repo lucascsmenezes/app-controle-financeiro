@@ -68,7 +68,6 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
       alert('Não há dados armazenados');
     }
   }
-
   return(
     <>
       <C.Container>
