@@ -13,3 +13,7 @@ export const Td = styled.td`
         cursor: pointer;
     }
 `;
+
+export const Checkbox = styled.input`
+
+`;

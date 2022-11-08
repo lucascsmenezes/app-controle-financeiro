@@ -14,7 +14,7 @@ const Form = ({handleAdd, transactionsList, setTransactionsList}) => {
   const [inputSearch, setSearch] = useState("");
   const [isExpense, setExpense] = useState(false);
   const currentDate = 
-    (newData.getUTCDay() -1) + 
+    (newData.getUTCDay()) + 
     "/" + 
     (newData.getUTCMonth() + 1) + 
     "/" + 
